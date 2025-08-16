@@ -155,4 +155,34 @@ body {
 #map {
     height: 350px;
     width: 100vh;
+    margin: 2rem;
 }
+
+
+.filters {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .filter {
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            margin: 1rem;
+            opacity: 0.8;
+            font-size: 0.8rem;
+        }
+
+        .filter:hover {
+            opacity: 1;
+            cursor: pointer;
+        }
+        .fuldis{display: inline;}
+        .nodis{display: none;}
+        .card-text{
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }

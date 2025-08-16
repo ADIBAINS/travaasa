@@ -4,7 +4,7 @@ const User = require("../models/user.js");
 const initdata = require('./data.js');
 const MONGO_URL = "mongodb://127.0.0.1:27017/travaasa";
 const mbxGeocoding = require('@mapbox/mapbox-sdk/services/geocoding');
-const geoCodingClient = mbxGeocoding({ accessToken: process.env.MAPBOX_Token });
+
 
 main().then(() => {
     console.log("Connection Established Successfully");

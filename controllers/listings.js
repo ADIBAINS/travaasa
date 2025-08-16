@@ -1,22 +1,24 @@
 const Listing = require('../models/listing');
 const mbxGeocoding = require('@mapbox/mapbox-sdk/services/geocoding');
-const mapToken = process.env.MAPBOX_TOKEN;
-const geoCodingClient = mbxGeocoding({ accessToken: mapToken });
+const MAPTOKEN = JSON.stringify(process.env.MAPBOX_TOKEN);
+const geoCodingClient = mbxGeocoding({ accessToken: MAPTOKEN });
 
 module.exports.index = async (req, res) => {
     const allListings = await Listing.find({});
-    res.render("listings/index.ejs", { allListings, mapToken }); // <-- pass mapToken here
+    res.render("listings/index.ejs", { allListings, MAPTOKEN }); // <-- pass mapToken here
 };
 
 
 module.exports.showListing = async (req, res) => {
     let { id } = req.params;
-    const reqListings = await Listing.findById(id).populate({ path: 'review', populate: { path: "author" } }).populate("owner");
+    const reqListings = await Listing.findById(id)
+        .populate({ path: 'review', populate: { path: "author" } })
+        .populate("owner");
     if (!reqListings) {
         req.flash("error", "No such Listing Found!");
         return res.redirect("/listings");
     }
-    res.render('listings/show.ejs', { reqListings });
+    res.render('listings/show.ejs', { reqListings, MAPTOKEN }); // <-- pass mapToken here
 };
 
 module.exports.renderNewForm = (req, res) => {
