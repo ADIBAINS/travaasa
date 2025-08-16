@@ -1,7 +1,6 @@
 <% layout('/layouts/boilerplate')%>
     <script>
         const MAP_TOKEN = "<%=process.env.MAPBOX_TOKEN%>";
-        console.log(MAP_TOKEN);
         const coordinates = <%= JSON.stringify(reqListings.geometry.coordinates) %>;
     </script>
 
