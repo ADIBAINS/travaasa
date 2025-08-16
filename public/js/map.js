@@ -1,4 +1,5 @@
 mapboxgl.accessToken = MAP_TOKEN;
+console.log(MAP_TOKEN);
 
 
 const map = new mapboxgl.Map({
