@@ -145,7 +145,7 @@ This project is licensed under the **MIT License** — see the [LICENSE](LICENSE
 - Improve styling / responsive front-end  
 - Add unit / integration tests  
 - Use more modular design or introduce front-end framework if needed  
-- Add API endpoints to support REST / mobile apps   
+- Transfrom into a mobile application  
 
 ---
 
