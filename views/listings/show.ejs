@@ -1,52 +1,59 @@
 <% layout('/layouts/boilerplate')%>
     <script>
         window.MAP_TOKEN = "<%= process.env.MAPBOX_TOKEN %>";
-        window.coordinates = <%= JSON.stringify(reqListings.geometry.coordinates) %>;
+        window.coordinates = "<%= JSON.stringify(reqListings.geometry.coordinates)%>"; 
     </script>
 
     <body>
 
         <div class="row mt-3">
-            <div class="col-8 offset-3">
-                <h2>
-                    <%=reqListings.title%>
-                </h2>
-            </div>
+            <div class="container">
 
-            <div class="card-listing col-6 offset-3">
-                <img src="<%= reqListings.image.url%>" class="card-img-top show-img mt-3" alt="listing_image">
-                <div class="card-body">
-                    <p class="card-text">Owned By : <b>
-                            <%=reqListings.owner.username%>
-                        </b></p>
-                    <p class="card-text">
-                    <div>
-                        <%= reqListings.description %>
-                    </div>
-                    <div><%=reqListings.price.toLocaleString("en-IN")%></div>
-                    <div>
-                        <%=reqListings.location%>
-                    </div>
-                    <div>
-                        <%=reqListings.country%>
-                    </div>
-                    </p>
-                    <hr>
+                <div class="col-8 offset-1">
+                    <h2>
+                        <%=reqListings.title%>
+                    </h2>
+                </div>
 
-
-                    <% if (userlog && userlog._id.equals(reqListings.owner._id) ) { %>
-                        <div class="btns">
-                            <button
-                                onclick="window.location.href='http://localhost:3000/listings/<%=reqListings._id%>/edit'"
-                                class="btn btn-dark edit-btn">EDIT</button>
-                            <form action="/listings/<%=reqListings._id%>?_method=DELETE" method="post"><button
-                                    class="btn btn-dark delete-btn">DELETE</button></form>
+                <div class="card-listing col-6 offset-1">
+                    <img src="<%= reqListings.image.url%>" class="card-img-top show-img mt-3" alt="listing_image">
+                    <div class="card-body">
+                        <p class="card-text">Owned By : <b>
+                                <%=reqListings.owner.username%>
+                            </b></p>
+                        <p class="card-text">
+                        <div>
+                            <%= reqListings.description %>
                         </div>
-                        <%}%>
+                        <div><%=reqListings.price.toLocaleString("en-IN")%></div>
+                        <div>
+                            <%=reqListings.location%>
+                        </div>
+                        <div>
+                            <%=reqListings.country%>
+                        </div>
+                        </p>
+                        <hr>
+
+
+                        <% if (userlog && userlog._id.equals(reqListings.owner._id) ) { %>
+                            <div class="btns d-flex justify-content-center">
+                                <form action="/listings/<%=reqListings._id%>/edit?_method=PATCH" method="post"><button
+                                        class="btn btn-dark edit-btn">DELETE</button></form>
+                                <form action="/listings/<%=reqListings._id%>?_method=DELETE" method="post"><button
+                                        class="btn btn-dark delete-btn">DELETE</button></form>
+                            </div>
+                            <%}%>
+                    </div>
+                </div>
+
+                <div class="col-8 offset-3 mb-3">
+                    <h3>Where you'll be</h3>
+                    <div id="map"></div>
                 </div>
             </div>
 
-            <div class="col-6 offset-3">
+            <div class="col-6 offset-1">
                 <% if (userlog){%>
                     <h4>Leave a Review</h4>
                     <form method="POST" class="mb-3 mt-3 needs-validation"
@@ -84,7 +91,7 @@
                     <%} %>
             </div>
 
-            <div class="col-6 offset-3">
+            <div class="col-6 offset-1">
                 <div class="row">
                     <h4>All Reviews</h4>
                     <% for (const userreview of reqListings.review) { %>
@@ -111,10 +118,7 @@
                         <%} %>
                 </div>
             </div>
-            <div class="col-8 offset-3 mb-3">
-                <h3>Where you'll be</h3>
-                <div id="map"></div>
-            </div>
+
         </div>
 
 
