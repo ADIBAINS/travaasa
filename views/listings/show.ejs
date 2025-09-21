@@ -1,7 +1,7 @@
 <% layout('/layouts/boilerplate')%>
     <script>
         window.MAP_TOKEN = "<%= process.env.MAPBOX_TOKEN %>";
-        window.coordinates = "<%= JSON.stringify(reqListings.geometry.coordinates)%>"; 
+        window.coordinates = <%= JSON.stringify(reqListings.geometry.coordinates)%>; 
     </script>
 
     <body>
