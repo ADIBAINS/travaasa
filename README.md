@@ -80,7 +80,7 @@ _Travaasa_ is a full-stack web application â€” my first end-to-end project. Itâ€
 
 4. Run the application  
    ```bash
-   npm start
+   node app.js / nodemon app.js
    ```
 
 5. Open in browser  
