@@ -153,11 +153,14 @@ body {
 /* map */
 
 #map {
-    height: 350px;
+    height: 60vh;
     width: 100vh;
-    margin: 2rem;
+    margin: 0.5rem;
 }
 
+.hr{
+    width: 100vh;
+}
 
 .filters {
             display: flex;
@@ -186,3 +189,5 @@ body {
             flex-direction: column;
             gap: 0.25rem;
         }
+
+    

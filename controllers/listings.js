@@ -1,11 +1,12 @@
 const Listing = require('../models/listing');
 const mbxGeocoding = require('@mapbox/mapbox-sdk/services/geocoding');
-const MAPTOKEN = JSON.stringify(process.env.MAPBOX_TOKEN);
+// Use the raw Mapbox token without JSON.stringify
+const MAPTOKEN = process.env.MAPBOX_TOKEN;
 const geoCodingClient = mbxGeocoding({ accessToken: MAPTOKEN });
 
 module.exports.index = async (req, res) => {
     const allListings = await Listing.find({});
-    res.render("listings/index.ejs", { allListings, MAPTOKEN }); // <-- pass mapToken here
+    res.render("listings/index.ejs", { allListings, MAPTOKEN });
 };
 
 
@@ -18,7 +19,7 @@ module.exports.showListing = async (req, res) => {
         req.flash("error", "No such Listing Found!");
         return res.redirect("/listings");
     }
-    res.render('listings/show.ejs', { reqListings, MAPTOKEN }); // <-- pass mapToken here
+    res.render('listings/show.ejs', { reqListings, MAPTOKEN });
 };
 
 module.exports.renderNewForm = (req, res) => {
@@ -32,8 +33,16 @@ module.exports.uploadNewListing = async (req, res) => {
 })
   .send();
   
-    let url = req.file.path;
-    let filename = req.file.filename;
+    let url;
+    let filename;
+    if (req.file) {
+        url = req.file.path;
+        filename = req.file.filename;
+    } else {
+        // fallback image if no file uploaded
+        url = "https://res.cloudinary.com/demo/image/upload/v1690000000/placeholder.jpg";
+        filename = "placeholder.jpg";
+    }
     const data = req.body.listing;
     const newListing = new Listing(data);
     newListing.owner = req.user._id;
