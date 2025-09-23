@@ -1,9 +1,76 @@
+<<<<<<< Updated upstream
 <style>
   .search-btn{
     background-color:#fe424d ;
     color: white;
     border-radius: 24px;
     padding: 0 1rem 0 1rem;
+=======
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="/css/style.css">
+<body>
+  <nav class="navbar navbar-expand-xl bg-body-light sticky-top">
+    <div class="container-fluid mx-3">
+      <a class="navbar-brand" href="/listings"><i class="fa-regular fa-compass"></i><span class="heading">Travaasa</span></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav ms-auto">
+          <form class="d-flex" role="search">
+        <input class="form-control me-2 search-inp" type="search" placeholder="Search Desinations"/>
+        <button class="btn search-btn" type="submit"><i class="fa-solid fa-magnifying-glass"></i>Search</button>
+      </form>
+        </div>
+        <div class="navbar-nav ms-auto">
+          <a class="nav-link host" href="/listings/new">Be a host</a>
+          <% if (!userlog) {%>
+            <a class="nav-link active" href="/signup">Sign up</a>
+            <a class="nav-link" href="/login">Login</a>
+            <%}%>
+            <% if (userlog) {%>
+              <a class="nav-link" href="/logout">Logout</a>
+              <%}%>
+              <button class="toggle-btn" id="theme-toggle">
+                <i class="fa-regular fa-sun" id="sun-icon" style="display: none;"></i>
+                <i class="fa-regular fa-moon" id="moon-icon"></i>
+              </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+</body>
+</html>
+
+
+
+<script>
+  const toggleBtn = document.getElementById("theme-toggle");
+  const moonIcon = document.getElementById("moon-icon");
+  const sunIcon = document.getElementById("sun-icon");
+  const body = document.body;
+ if (localStorage.getItem("theme") === "dark") {
+  body.classList.add("dark");
+  moonIcon.style.display = "none";
+  sunIcon.style.display = "inline-block";
+}
+
+// Toggle theme on click
+toggleBtn.addEventListener("click", () => {
+  body.classList.toggle("dark");
+
+  // Save theme
+  if (body.classList.contains("dark")) {
+    localStorage.setItem("theme", "dark");
+    moonIcon.style.display = "none";
+    sunIcon.style.display = "inline-block";
+
+  } else {
+    localStorage.setItem("theme", "light");
+    moonIcon.style.display = "inline-block";
+    sunIcon.style.display = "none";
+>>>>>>> Stashed changes
 
   }
   .search-btn:hover{

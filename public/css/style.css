@@ -13,7 +13,15 @@ body {
 
 .navbar {
     height: 5rem;
-    background-color: white;
+    background-color: var(--card-bg);
+}
+.navbar-collapse {
+    height: auto;
+    width: 100%;
+    background-color: var(--card-bg);
+    padding: 1rem;
+    border-radius: 0.5rem;
+    margin: 1rem;
 }
 
 .fa-compass {
@@ -140,7 +148,7 @@ body {
 
 .delete-btn {
 
-    background-color: #000000d5 !important;
+    background-color: #222222 !important;
     color: #ffffff !important;
     padding: 0.5rem 1.5rem !important;
     border-radius: 0.5rem !important;
@@ -163,11 +171,17 @@ body {
 }
 
 .filters {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            justify-content: center;
-        }
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    overflow-x: auto;
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+}
+
+.filters::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+}
 
         .filter {
             display: flex;
@@ -190,4 +204,80 @@ body {
             gap: 0.25rem;
         }
 
-    
+
+.search-btn {
+    background-color: var(--logo-color);
+    color: white;
+    border-radius: 24px;
+    padding: 0 1rem 0 1rem;
+
+}
+
+.search-btn:hover {
+    background-color: var(--logo-color);
+    color: white;
+
+}
+
+.search-btn i {
+    display: inline;
+    margin-right: 0.5rem;
+}
+
+.search-inp {
+    border-radius: 24px;
+    padding: 0.5rem 3rem 0.5rem 3rem;
+    font-size: 1rem;
+    background-color: var(--card-bg);
+}
+
+.search-inp::placeholder {
+    color: var(--text-color);
+
+}
+
+.search-inp:focus {
+    background-color: var(--card-bg);
+    color: var(--text-color);
+
+}
+
+.nav-link {
+    border-radius: 30px;
+}
+
+.nav-link:hover {
+    background-color: #f7f7f72c;
+    border-radius: 30px;
+}
+
+.host {
+    font-weight: 600;
+}
+
+.navbar-brand {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--logo-color) !important;
+    font-size: 24px;
+    gap: 4px;
+    text-decoration: none;
+}
+
+.mx-6 {
+    margin: 0 6rem;
+}
+
+.toggle-btn {
+        border: none;
+        background: transparent;
+        font-size: 1.2rem;
+        cursor: auto;
+        color: inherit; /* picks text color based on theme */
+  
+}
+
+label{
+    cursor: pointer;
+}
