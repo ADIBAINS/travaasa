@@ -5,7 +5,7 @@ if (process.env.NODE_ENV != "production"){
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
-const port = 3000;
+const port = process.env.PORT || 3000;
 const method_override = require('method-override');
 const ejsMate = require('ejs-mate');
 const ExpressError = require("./util/ExpressError.js");
@@ -121,6 +121,6 @@ app.use((err,req,res,next)=>{
 
 // server running
 
-app.listen(port , ()=>{
+app.listen(port,'0.0.0.0', ()=>{
     console.log(`The server is active on port : ${port}`);
 })
