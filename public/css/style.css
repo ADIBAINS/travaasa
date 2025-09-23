@@ -30,6 +30,15 @@ body {
 .navbar {
     height: 5rem;
     background-color: var(--card-bg);
+
+}
+.navbar-collapse {
+    height: auto;
+    width: 100%;
+    background-color: var(--card-bg);
+    padding: 1rem;
+    border-radius: 0.5rem;
+    margin: 1rem;
 }
 
 .fa-compass {
@@ -166,8 +175,7 @@ body {
 
 
 .delete-btn {
-
-    background-color: var(--text-color) !important;
+    background-color: #222222 !important;
     color: #ffffff !important;
     padding: 0.5rem 1.5rem !important;
     border-radius: 0.5rem !important;
@@ -191,38 +199,38 @@ body {
 
 .filters {
     display: flex;
-    flex-wrap: wrap;
+
+    flex-wrap: nowrap;
     align-items: center;
-    justify-content: center;
+    overflow-x: auto;
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
 }
 
-.filter {
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    margin: 1rem;
-    opacity: 0.8;
-    font-size: 0.8rem;
+.filters::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
 }
 
-.filter:hover {
-    opacity: 1;
-    cursor: pointer;
-}
+        .filter {
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            margin: 1rem;
+            opacity: 0.8;
+            font-size: 0.8rem;
+        }
 
-.fuldis {
-    display: inline;
-}
-
-.nodis {
-    display: none;
-}
-
-.card-text {
-    display: flex;
-    flex-direction: column;
-    gap: 0.25rem;
-}
+        .filter:hover {
+            opacity: 1;
+            cursor: pointer;
+        }
+        .fuldis{display: inline;}
+        .nodis{display: none;}
+        .card-text{
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
 
 
 .search-btn {
@@ -296,5 +304,9 @@ body {
         cursor: pointer;
         color: inherit; /* picks text color based on theme */
   
+}
+
+label{
+    cursor: pointer;
 }
 
