@@ -7,7 +7,7 @@
     <body>
 
         <div class="row mt-3">
-            <div class="container">
+            <div class="container" style="max-width: 720px;">
 
                 <div class="col-8-md offset-2-md">
                     <h2>
@@ -15,7 +15,7 @@
                     </h2>
                 </div>
 
-                <div class="card-listing col-6-md offset-2-md ">
+                <div class="card-listing col-6-md offset-2-md col-8-lg offset-2-md ">
                     <img src="<%= reqListings.image.url%>" class="card-img-top show-img mt-3" alt="listing_image">
                     <div class="card-body">
                         <p class="card-text">Owned By : <b>
@@ -49,74 +49,75 @@
 
                 <div class="col-8-lg offset-2-lg mb-3 ">
                     <h3>Where you'll be</h3>
-                    <div id="map"></div>
+                    <div id="map" class="col-md"></div>
                     <hr class="hr">
                 </div>
-            </div>
-
-            <div class="col-6-lg offset-2-lg">
-                <% if (userlog){%>
-                    <h4>Leave a Review</h4>
-                    <form method="POST" class="mb-3 mt-3 needs-validation"
-                        action="/listings/<%= reqListings._id %>/reviews" novalidate>
-                        <div class=" mt-3">
-                            <label for="rating" class="form-label">Rating</label>
-                            <fieldset class="starability-slot ">
-                                <input type="radio" id="no-rate" class="input-no-rate" name="review[rating]" value="0"
-                                    aria-label="No rating." checked />
-                                <input type="radio" id="first-rate1" name="review[rating]" value="1" required />
-                                <label for="first-rate1" title="Terrible">1 star</label>
-                                <input type="radio" id="first-rate2" name="review[rating]" value="2" />
-                                <label for="first-rate2" title="Not good">2 stars</label>
-                                <input type="radio" id="first-rate3" name="review[rating]" value="3" />
-                                <label for="first-rate3" title="Average">3 stars</label>
-                                <input type="radio" id="first-rate4" name="review[rating]" value="4" />
-                                <label for="first-rate4" title="Very good">4 stars</label>
-                                <input type="radio" id="first-rate5" name="review[rating]" value="5" />
-                                <label for="first-rate5" title="Amazing">5 stars</label>
-                            </fieldset>
-                            <div class="invalid-feedback">Rating is a Required field</div>
-                        </div>
-                        <div class="mb-3">
-                            <label for="comment" class="form-label ">Comment</label>
-                            <textarea name="review[comment]" id="comment" class="form-control " required></textarea>
-                            <div class="invalid-feedback">Comment is a Required field</div>
-                        </div>
-                        <button class="btn btn-dark">Submit</button>
-                    </form>
-                    <hr class="hr">
-                    <%} %>
-            </div>
-
-            <div class="col-6-lg offset-2-lg">
-                <div class="row">
-                    <h4>All Reviews</h4>
-                    <% for (const userreview of reqListings.review) { %>
-                        <div class="card col-5 mb-3 ms-2">
-                            <div class="card-body ">
-                                <div class="card-title"><b>
-                                        <%=userreview.author.username%>
-                                    </b></div>
-                                <p class="card-text">
-                                <p class="starability-result card-text" data-rating=<%=userreview.rating%> >
-
-                                </p>
-                                <%= userreview.comment%>
-                                    </p>
-
+                <div class="col-6-lg offset-2-lg">
+                    <% if (userlog){%>
+                        <h4>Leave a Review</h4>
+                        <form method="POST" class="mb-3 mt-3 needs-validation"
+                            action="/listings/<%= reqListings._id %>/reviews" novalidate>
+                            <div class=" mt-3">
+                                <label for="rating" class="form-label">Rating</label>
+                                <fieldset class="starability-slot ">
+                                    <input type="radio" id="no-rate" class="input-no-rate" name="review[rating]" value="0"
+                                        aria-label="No rating." checked />
+                                    <input type="radio" id="first-rate1" name="review[rating]" value="1" required />
+                                    <label for="first-rate1" title="Terrible">1 star</label>
+                                    <input type="radio" id="first-rate2" name="review[rating]" value="2" />
+                                    <label for="first-rate2" title="Not good">2 stars</label>
+                                    <input type="radio" id="first-rate3" name="review[rating]" value="3" />
+                                    <label for="first-rate3" title="Average">3 stars</label>
+                                    <input type="radio" id="first-rate4" name="review[rating]" value="4" />
+                                    <label for="first-rate4" title="Very good">4 stars</label>
+                                    <input type="radio" id="first-rate5" name="review[rating]" value="5" />
+                                    <label for="first-rate5" title="Amazing">5 stars</label>
+                                </fieldset>
+                                <div class="invalid-feedback">Rating is a Required field</div>
                             </div>
-                            <% if (userlog && userreview.author._id.equals(userlog._id)) { %>
-                                <form class="mb-3 mt-3" method="POST"
-                                    action="/listings/<%=reqListings._id%>/reviews/<%= userreview._id%>?_method=DELETE">
-                                    <button class="btn btn-sm btn-dark">DELETE</button>
-                                </form>
-                                <%}%>
-                        </div>
+                            <div class="mb-3">
+                                <label for="comment" class="form-label ">Comment</label>
+                                <textarea name="review[comment]" id="comment" class="form-control " required></textarea>
+                                <div class="invalid-feedback">Comment is a Required field</div>
+                            </div>
+                            <button class="btn btn-dark">Submit</button>
+                        </form>
+                        <hr class="hr">
                         <%} %>
                 </div>
+    
+                <div class="col-6-lg offset-2-lg">
+                    <div class="row">
+                        <h4>All Reviews</h4>
+                        <% for (const userreview of reqListings.review) { %>
+                            <div class="card col-5 mb-3 ms-2">
+                                <div class="card-body ">
+                                    <div class="card-title"><b>
+                                            <%=userreview.author.username%>
+                                        </b></div>
+                                    <p class="card-text">
+                                    <p class="starability-result card-text" data-rating=<%=userreview.rating%> >
+    
+                                    </p>
+                                    <%= userreview.comment%>
+                                        </p>
+    
+                                </div>
+                                <% if (userlog && userreview.author._id.equals(userlog._id)) { %>
+                                    <form class="mb-3 mt-3" method="POST"
+                                        action="/listings/<%=reqListings._id%>/reviews/<%= userreview._id%>?_method=DELETE">
+                                        <button class="btn btn-sm btn-dark">DELETE</button>
+                                    </form>
+                                    <%}%>
+                            </div>
+                            <%} %>
+                    </div>
+                </div>
+    
+            </div>
             </div>
 
-        </div>
+            
 
 
 
