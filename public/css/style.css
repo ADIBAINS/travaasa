@@ -151,7 +151,7 @@ body {
 
 
 .show-img {
-    height: 30vh;
+    height: 50vh;
 }
 
 .btns {
@@ -189,12 +189,12 @@ body {
 
 #map {
     height: 60vh;
-    width: 100vh;
+    width: 90vh;
     margin: 0.5rem;
 }
 
 .hr {
-    width: 100vh;
+    width: 100%;
 }
 
 .filters {
@@ -294,7 +294,7 @@ body {
 }
 
 .mx-6 {
-    margin: 0 6rem;
+    margin: 0 3rem;
 }
 
 .toggle-btn {
@@ -310,3 +310,76 @@ label{
     cursor: pointer;
 }
 
+@media screen and (max-width: 400px) {
+    .mx-6 {
+        margin: 0 1rem;
+    }
+    .navbar-collapse{
+        margin: 0;
+    }
+    .navbar-brand{
+        font-size: 1rem;
+    }
+    .navbar-toggler{
+        font-size: 1rem;
+    }
+    .navbar-nav{
+        font-size: 0.8rem;
+    }
+    .navbar-nav a{
+        padding: 0.5rem 1rem;
+    }
+    .navbar-nav a:hover{
+        background-color: transparent;
+    }
+    .navbar-nav a:active{
+        background-color: transparent;
+    }
+    .navbar-nav a:focus{
+        background-color: transparent;
+    }
+    .navbar-nav a:visited{
+        background-color: transparent;
+    }
+    .navbar-nav a:link{
+        background-color: transparent;
+    }
+    .navbar-nav a:active{
+        background-color: transparent;
+    }
+    h2{
+        font-size: 1rem;
+    }
+    .card-listing{
+
+    }
+    #map {
+        height: 20vh;
+        width: 50vh;
+        margin: 0.5rem;
+    }
+    .card-text{
+        font-size: 12px; 
+    }
+    
+    .hr {
+        width: 100%;
+    }
+    .show-img{
+        height: 30vh;
+
+    }
+
+    .card{
+        width: 40vh;
+    }
+    
+    p div{
+        font-size: 12px;
+        padding-top: 0.4rem;
+    }
+
+    .search-inp::placeholder{
+        display: none;
+    }
+}
