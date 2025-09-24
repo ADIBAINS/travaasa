@@ -426,9 +426,22 @@ label{
     .starability-result{
         width: 80%;
     }
+    .f-info-socials a {
+        margin-right: 0.5rem;
+        font-size: 0.6rem;
+        text-decoration: none;
+        color: var(--text-color);
+    }
+    
 }
 
 @media   (min-width : 400px ) and (max-width: 600px) {
+    .f-info-socials a {
+        margin-right: 0.5rem;
+        font-size: 0.8rem;
+        text-decoration: none;
+        color: var(--text-color);
+    }
     #map{
         width: 100%;
         height: 50vh;
