@@ -2,9 +2,9 @@
 if (process.env.NODE_ENV != "production"){
     require('dotenv').config();
 }
-// const express = require('express');
-// const app = express();
-// const mongoose = require('mongoose');
+const express = require('express');
+const app = express();
+const mongoose = require('mongoose');
 const port = process.env.PORT || 3000;
 const method_override = require('method-override');
 const ejsMate = require('ejs-mate');
