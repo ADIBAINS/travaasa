@@ -24,6 +24,8 @@ You need Rust 1.100 or newer, Node.js 22.17 or newer, and a local MongoDB instan
 
 Sign up, then select **Host a stay** to publish the first listing on an empty database. Search supports partial matches by title, location, and country. You can combine the search with a category and price range and sort by price or newest.
 
+Use the heart on a listing card to save it to your account. Select up to three stays with **Compare** to check prices and reviews, estimate the cost of a chosen number of nights, or share a link to the selection. Hosts can open **Your listings** to see and edit their own stays.
+
 To load the sample listings into a fresh local database, run `mongoimport` from the MongoDB Database Tools.
 
 ```sh

@@ -8,7 +8,8 @@
     },
     "price": 1500,
     "location": "Malibu",
-    "country": "United States"
+    "country": "United States",
+    "category": "Beach"
   },
   {
     "title": "Modern Loft in Downtown",
@@ -19,7 +20,8 @@
     },
     "price": 1200,
     "location": "New York City",
-    "country": "United States"
+    "country": "United States",
+    "category": "City"
   },
   {
     "title": "Mountain Retreat",
@@ -30,7 +32,8 @@
     },
     "price": 1000,
     "location": "Aspen",
-    "country": "United States"
+    "country": "United States",
+    "category": "Mountains"
   },
   {
     "title": "Historic Villa in Tuscany",
@@ -41,7 +44,8 @@
     },
     "price": 2500,
     "location": "Florence",
-    "country": "Italy"
+    "country": "Italy",
+    "category": "Countryside"
   },
   {
     "title": "Secluded Treehouse Getaway",
@@ -52,7 +56,8 @@
     },
     "price": 800,
     "location": "Portland",
-    "country": "United States"
+    "country": "United States",
+    "category": "Countryside"
   },
   {
     "title": "Beachfront Paradise",
@@ -63,7 +68,8 @@
     },
     "price": 2000,
     "location": "Cancun",
-    "country": "Mexico"
+    "country": "Mexico",
+    "category": "Beach"
   },
   {
     "title": "Rustic Cabin by the Lake",
@@ -74,7 +80,8 @@
     },
     "price": 900,
     "location": "Lake Tahoe",
-    "country": "United States"
+    "country": "United States",
+    "category": "Countryside"
   },
   {
     "title": "Luxury Penthouse with City Views",
@@ -85,7 +92,8 @@
     },
     "price": 3500,
     "location": "Los Angeles",
-    "country": "United States"
+    "country": "United States",
+    "category": "City"
   },
   {
     "title": "Ski-In/Ski-Out Chalet",
@@ -96,7 +104,8 @@
     },
     "price": 3000,
     "location": "Verbier",
-    "country": "Switzerland"
+    "country": "Switzerland",
+    "category": "Mountains"
   },
   {
     "title": "Safari Lodge in the Serengeti",
@@ -107,7 +116,8 @@
     },
     "price": 4000,
     "location": "Serengeti National Park",
-    "country": "Tanzania"
+    "country": "Tanzania",
+    "category": "Countryside"
   },
   {
     "title": "Historic Canal House",
@@ -118,7 +128,8 @@
     },
     "price": 1800,
     "location": "Amsterdam",
-    "country": "Netherlands"
+    "country": "Netherlands",
+    "category": "City"
   },
   {
     "title": "Private Island Retreat",
@@ -129,7 +140,8 @@
     },
     "price": 10000,
     "location": "Fiji",
-    "country": "Fiji"
+    "country": "Fiji",
+    "category": "Beach"
   },
   {
     "title": "Charming Cottage in the Cotswolds",
@@ -140,7 +152,8 @@
     },
     "price": 1200,
     "location": "Cotswolds",
-    "country": "United Kingdom"
+    "country": "United Kingdom",
+    "category": "Countryside"
   },
   {
     "title": "Historic Brownstone in Boston",
@@ -151,7 +164,8 @@
     },
     "price": 2200,
     "location": "Boston",
-    "country": "United States"
+    "country": "United States",
+    "category": "City"
   },
   {
     "title": "Beachfront Bungalow in Bali",
@@ -162,7 +176,8 @@
     },
     "price": 1800,
     "location": "Bali",
-    "country": "Indonesia"
+    "country": "Indonesia",
+    "category": "Beach"
   },
   {
     "title": "Mountain View Cabin in Banff",
@@ -173,7 +188,8 @@
     },
     "price": 1500,
     "location": "Banff",
-    "country": "Canada"
+    "country": "Canada",
+    "category": "Mountains"
   },
   {
     "title": "Art Deco Apartment in Miami",
@@ -184,7 +200,8 @@
     },
     "price": 1600,
     "location": "Miami",
-    "country": "United States"
+    "country": "United States",
+    "category": "City"
   },
   {
     "title": "Tropical Villa in Phuket",
@@ -195,7 +212,8 @@
     },
     "price": 3000,
     "location": "Phuket",
-    "country": "Thailand"
+    "country": "Thailand",
+    "category": "Beach"
   },
   {
     "title": "Historic Castle in Scotland",
@@ -206,7 +224,8 @@
     },
     "price": 4000,
     "location": "Scottish Highlands",
-    "country": "United Kingdom"
+    "country": "United Kingdom",
+    "category": "Countryside"
   },
   {
     "title": "Desert Oasis in Dubai",
@@ -217,7 +236,8 @@
     },
     "price": 5000,
     "location": "Dubai",
-    "country": "United Arab Emirates"
+    "country": "United Arab Emirates",
+    "category": "City"
   },
   {
     "title": "Rustic Log Cabin in Montana",
@@ -228,7 +248,8 @@
     },
     "price": 1100,
     "location": "Montana",
-    "country": "United States"
+    "country": "United States",
+    "category": "Mountains"
   },
   {
     "title": "Beachfront Villa in Greece",
@@ -239,7 +260,8 @@
     },
     "price": 2500,
     "location": "Mykonos",
-    "country": "Greece"
+    "country": "Greece",
+    "category": "Beach"
   },
   {
     "title": "Eco-Friendly Treehouse Retreat",
@@ -250,7 +272,8 @@
     },
     "price": 750,
     "location": "Costa Rica",
-    "country": "Costa Rica"
+    "country": "Costa Rica",
+    "category": "Countryside"
   },
   {
     "title": "Historic Cottage in Charleston",
@@ -261,7 +284,8 @@
     },
     "price": 1600,
     "location": "Charleston",
-    "country": "United States"
+    "country": "United States",
+    "category": "City"
   },
   {
     "title": "Modern Apartment in Tokyo",
@@ -272,7 +296,8 @@
     },
     "price": 2000,
     "location": "Tokyo",
-    "country": "Japan"
+    "country": "Japan",
+    "category": "City"
   },
   {
     "title": "Lakefront Cabin in New Hampshire",
@@ -283,7 +308,8 @@
     },
     "price": 1200,
     "location": "New Hampshire",
-    "country": "United States"
+    "country": "United States",
+    "category": "Countryside"
   },
   {
     "title": "Luxury Villa in the Maldives",
@@ -294,7 +320,8 @@
     },
     "price": 6000,
     "location": "Maldives",
-    "country": "Maldives"
+    "country": "Maldives",
+    "category": "Beach"
   },
   {
     "title": "Ski Chalet in Aspen",
@@ -305,7 +332,8 @@
     },
     "price": 4000,
     "location": "Aspen",
-    "country": "United States"
+    "country": "United States",
+    "category": "Mountains"
   },
   {
     "title": "Secluded Beach House in Costa Rica",
@@ -316,6 +344,7 @@
     },
     "price": 1800,
     "location": "Costa Rica",
-    "country": "Costa Rica"
+    "country": "Costa Rica",
+    "category": "Beach"
   }
 ]

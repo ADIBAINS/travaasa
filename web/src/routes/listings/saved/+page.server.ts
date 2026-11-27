@@ -1,8 +1,5 @@
-import { redirect } from '@sveltejs/kit';
-import { loadCatalog } from '#lib/server/api.js';
-import type { PageServerLoad } from './$types';
+import { catalogActions, loadCatalog } from '#lib/server/api.js';
+import type { Actions, PageServerLoad } from './$types';
 
-export const load: PageServerLoad = async (event) => {
-    if (!(await event.parent()).user) redirect(303, '/login?next=/listings/saved');
-    return loadCatalog(event, true);
-};
+export const load: PageServerLoad = async (event) => loadCatalog(event, 'saved', (await event.parent()).user);
+export const actions: Actions = catalogActions;

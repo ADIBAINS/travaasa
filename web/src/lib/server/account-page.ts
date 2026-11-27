@@ -3,7 +3,7 @@ import { ApiFailure, authenticate } from './api.js';
 
 export function destination(url: URL) {
     const next = url.searchParams.get('next');
-    if (next && /^\/listings(?:\/(?:new|saved|[a-f0-9]{24}(?:\/edit)?))?$/.test(next)) return next;
+    if (next && /^\/listings(?:\/(?:new|saved|mine|[a-f0-9]{24}(?:\/edit)?))?$/.test(next)) return next;
     return '/listings';
 }
 

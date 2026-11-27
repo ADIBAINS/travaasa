@@ -1,4 +1,4 @@
-import { error, type Cookies, type RequestEvent } from '@sveltejs/kit';
+import { error, fail, redirect, type Cookies, type RequestEvent } from '@sveltejs/kit';
 import type { User, Catalog } from '#lib/stays.js';
 
 const sessionCookie = 'travaasa_session';
@@ -75,22 +75,49 @@ export async function signOut(cookies: Cookies) {
     cookies.delete(sessionCookie, { path: '/' });
 }
 
-export async function loadCatalog(event: RequestEvent, saved: boolean) {
+export async function loadCatalog(event: RequestEvent, mode: 'explore' | 'saved' | 'mine', user: User | null) {
+    const base = mode === 'explore' ? '/listings' : `/listings/${mode}`;
+    if (mode !== 'explore' && !user) redirect(303, `/login?next=${base}`);
     const filters = Object.fromEntries(
         ['q', 'category', 'min', 'max', 'sort', 'page'].map((key) => [key, event.url.searchParams.get(key) ?? ''])
     );
     const query = new URLSearchParams(Object.entries(filters).filter(([, value]) => value !== ''));
-    const base = saved ? '/listings/saved' : '/listings';
     try {
-        const catalog = await api<Catalog>(`${base}?${query}`, event.cookies);
-        return { catalog, filters, base, saved, message: '' };
+        const [catalog, ids] = await Promise.all([
+            api<Catalog>(`${base}?${query}`, event.cookies),
+            user && mode === 'explore' ? api<string[]>('/listings/saved/ids', event.cookies) : Promise.resolve<string[]>([])
+        ]);
+        const savedIds = catalog.stays.filter((stay) => mode === 'saved' || ids.includes(stay.id)).map((stay) => stay.id);
+        return { catalog, filters, base, mode, savedIds, message: '' };
     } catch (exception) {
         if (exception instanceof ApiFailure && exception.status === 400) {
-            return { catalog: { stays: [], page: 1, pages: 1, count: 0 }, filters, base, saved, message: exception.message };
+            return { catalog: { stays: [], page: 1, pages: 1, count: 0 }, filters, base, mode, savedIds: [], message: exception.message };
         }
         rethrowPage(exception);
     }
 }
+
+export const catalogActions = {
+    toggleSaved: async ({ request, cookies, url }: RequestEvent) => {
+        const form = await request.formData();
+        const id = form.get('id');
+        const action = form.get('operation');
+        if (typeof id !== 'string' || !/^[a-f0-9]{24}$/i.test(id) || (action !== 'save' && action !== 'unsave')) {
+            return fail(400, { message: 'Choose a valid stay to save or remove.' });
+        }
+
+        try {
+            await api(`/listings/${id}/saved`, cookies, { method: action === 'save' ? 'PUT' : 'DELETE' });
+        } catch (exception) {
+            if (exception instanceof ApiFailure) {
+                if (exception.status === 401) redirect(303, `/login?next=${url.pathname}`);
+                return fail(exception.status, { message: exception.message });
+            }
+            throw exception;
+        }
+        return { message: '', savedChange: action === 'save' ? 'Stay saved.' : 'Stay removed.' };
+    }
+};
 
 export async function stayForm(request: Request) {
     const submitted = await request.formData();

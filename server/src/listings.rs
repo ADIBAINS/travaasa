@@ -180,7 +180,9 @@ struct ReviewInput {
 pub fn routes() -> Router<App> {
     Router::new()
         .route("/listings", get(catalog).post(create))
+        .route("/listings/mine", get(host_catalog))
         .route("/listings/saved", get(saved_catalog))
+        .route("/listings/saved/ids", get(saved_listing_ids))
         .route("/listings/{id}", get(detail).put(update).delete(remove))
         .route(
             "/listings/{id}/saved",
@@ -195,6 +197,9 @@ pub async fn ensure_indexes(db: &Database) -> mongodb::error::Result<()> {
         .create_indexes([
             IndexModel::builder()
                 .keys(doc! { "category": 1, "_id": -1 })
+                .build(),
+            IndexModel::builder()
+                .keys(doc! { "owner": 1, "_id": -1 })
                 .build(),
             IndexModel::builder()
                 .keys(doc! { "price": 1, "_id": -1 })
@@ -248,6 +253,19 @@ async fn saved_catalog(
 ) -> ApiResult<Json<Catalog>> {
     let ids = saved_ids(&state, &user).await?;
     find_catalog(&state, filters, doc! { "_id": { "$in": ids } }).await
+}
+
+async fn saved_listing_ids(State(state): State<App>, user: User) -> ApiResult<Json<Vec<String>>> {
+    let ids = saved_ids(&state, &user).await?;
+    Ok(Json(ids.into_iter().map(ObjectId::to_hex).collect()))
+}
+
+async fn host_catalog(
+    State(state): State<App>,
+    user: User,
+    Query(filters): Query<Filters>,
+) -> ApiResult<Json<Catalog>> {
+    find_catalog(&state, filters, doc! { "owner": user.id }).await
 }
 
 async fn find_catalog(
