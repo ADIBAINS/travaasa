@@ -1,4 +1,8 @@
 .env
 node_modules/
 **/DS_Store
-init/
+.env.*
+!.env.example
+server/target/
+web/.svelte-kit/
+web/build/
